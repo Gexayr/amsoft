@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NeonIT Solutions</title>
+  <title>Amsoft IT Solutions</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -61,119 +62,303 @@
         box-shadow: 0 0 0 8px #a21caf, 0 0 32px #3b82f6, 0 0 48px #a21caf;
       }
     }
+    /* Services Section Styles */
+    .services-section {
+      padding: 80px 0;
+      background-color: #0f172a; /* Matches darkbg */
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-top: 60px;
+    }
+    .service-card {
+      background-color: #1e293b; /* Matches darkcard */
+      border-radius: 15px;
+      padding: 40px 30px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid #3b82f6; /* Matches neonblue */
+      cursor: pointer;
+    }
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(0, 123, 255, 0.4);
+    }
+    .service-card .icon-wrapper {
+      background: linear-gradient(45deg, #a21caf, #3b82f6); /* Matches neonpurple to neonblue */
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto 25px;
+      font-size: 3em;
+      color: white;
+      box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
+    }
+    .service-card h3 {
+      font-size: 1.8em;
+      margin-bottom: 15px;
+      font-family: 'Poppins', sans-serif;
+    }
+    .service-card p {
+      font-size: 1em;
+      color: #ccc;
+      font-family: 'Inter', sans-serif;
+    }
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content {
+      background-color: #1e293b;
+      border-radius: 15px;
+      padding: 30px;
+      max-width: 500px;
+      width: 90%;
+      text-align: center;
+      border: 2px solid #3b82f6;
+      box-shadow: 0 0 20px #a21caf;
+    }
+    .modal-content .icon-wrapper {
+      background: linear-gradient(45deg, #a21caf, #3b82f6);
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto 20px;
+      font-size: 2em;
+      color: white;
+    }
+    .modal-content h3 {
+      font-size: 2em;
+      margin-bottom: 15px;
+      font-family: 'Poppins', sans-serif;
+      color: white;
+      text-shadow: 0 0 8px #3b82f6;
+    }
+    .modal-content p {
+      font-size: 1.1em;
+      color: #ccc;
+      margin-bottom: 20px;
+      font-family: 'Inter', sans-serif;
+    }
+    .modal-content .close-btn {
+      background-color: #a21caf;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 25px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .modal-content .close-btn:hover {
+      background-color: #3b82f6;
+    }
   </style>
 </head>
 <body class="bg-darkbg text-white min-h-screen flex flex-col">
-  <!-- Hero Section -->
-  <section class="flex flex-col items-center justify-center text-center py-24 px-4 bg-gradient-to-b from-darkbg to-darkcard">
-    <h1 class="text-4xl md:text-6xl font-bold neon mb-4 animate-pulse">NeonIT Solutions</h1>
-    <p class="text-xl md:text-2xl text-gray-300 mb-8 max-w-2xl">Empowering your business with cutting-edge web, mobile, automation, and AI solutions.</p>
-    <a href="#contact" class="inline-block px-8 py-3 rounded-full bg-neonblue hover:bg-neonpurple transition-colors duration-300 text-white font-bold shadow-lg neon-border">Get Started</a>
-  </section>
+<!-- Hero Section -->
+<section class="flex flex-col items-center justify-center text-center py-24 px-4 bg-gradient-to-b from-darkbg to-darkcard">
+  <h1 class="text-4xl md:text-6xl font-bold neon mb-4 animate-pulse">Amoft IT Solutions</h1>
+  <p class="text-xl md:text-2xl text-gray-300 mb-8 max-w-2xl">Empowering your business with cutting-edge web, mobile, automation, and AI solutions.</p>
+  <a href="#contact" class="inline-block px-8 py-3 rounded-full bg-neonblue hover:bg-neonpurple transition-colors duration-300 text-white font-bold shadow-lg neon-border">Get Started</a>
+</section>
 
-  <!-- Our Services -->
-  <section class="py-20 px-4 max-w-6xl mx-auto w-full">
+<!-- Our Services -->
+<section class="services-section">
+  <div class="container max-w-6xl mx-auto px-4">
     <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 neon">Our Services</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-      <!-- Web Dev Card -->
-      <div class="bg-darkcard rounded-xl p-8 shadow-lg neon-border fade-in">
-        <img src="https://source.unsplash.com/80x80/?web,code" alt="Web Dev" class="mb-4 rounded-full mx-auto border-4 border-neonblue float-anim neon-pulse" />
-        <h3 class="text-xl font-bold mb-2">Web Development</h3>
-        <p class="text-gray-400">Modern, scalable websites and web apps tailored to your business needs.</p>
+    <div class="services-grid">
+      <div class="service-card fade-in" onclick="openModal('web')">
+        <div class="icon-wrapper"><i class="fas fa-desktop"></i></div>
+        <h3>Web Development</h3>
+        <p>Custom websites tailored to your business needs</p>
       </div>
-      <!-- Mobile Dev Card -->
-      <div class="bg-darkcard rounded-xl p-8 shadow-lg neon-border fade-in">
-        <img src="https://source.unsplash.com/80x80/?mobile,app" alt="Mobile Dev" class="mb-4 rounded-full mx-auto border-4 border-neonpurple float-anim neon-pulse" />
-        <h3 class="text-xl font-bold mb-2">Mobile App Development</h3>
-        <p class="text-gray-400">Cross-platform mobile apps with seamless user experiences.</p>
+      <div class="service-card fade-in" onclick="openModal('mobile')">
+        <div class="icon-wrapper"><i class="fas fa-mobile-alt"></i></div>
+        <h3>Mobile Development</h3>
+        <p>Innovative mobile apps for iOS and Android platforms</p>
       </div>
-      <!-- Automation Card -->
-      <div class="bg-darkcard rounded-xl p-8 shadow-lg neon-border fade-in">
-        <img src="https://source.unsplash.com/80x80/?automation,crm" alt="Automation" class="mb-4 rounded-full mx-auto border-4 border-neonblue float-anim neon-pulse" />
-        <h3 class="text-xl font-bold mb-2">Business Automation</h3>
-        <p class="text-gray-400">CRM, ERP, SRM systems to automate and optimize your workflows.</p>
+      <div class="service-card fade-in" onclick="openModal('automation')">
+        <div class="icon-wrapper"><i class="fas fa-cogs"></i></div>
+        <h3>Automation</h3>
+        <p>Streamline operations with CRM and AI solutions</p>
       </div>
-      <!-- AI Solutions Card -->
-      <div class="bg-darkcard rounded-xl p-8 shadow-lg neon-border fade-in">
-        <img src="https://source.unsplash.com/80x80/?ai,robot" alt="AI Solutions" class="mb-4 rounded-full mx-auto border-4 border-neonpurple float-anim neon-pulse" />
-        <h3 class="text-xl font-bold mb-2">AI-Based Solutions</h3>
-        <p class="text-gray-400">Intelligent bots, AI agents, and smart tools for the future.</p>
+      <div class="service-card fade-in" onclick="openModal('ai')">
+        <div class="icon-wrapper"><i class="fas fa-brain"></i></div>
+        <h3>AI Solutions</h3>
+        <p>Intelligent AI powered tools and integrated bots</p>
       </div>
-    </div>
-  </section>
-
-  <!-- Why Choose Us -->
-  <section class="py-20 px-4 bg-gradient-to-r from-darkcard to-darkbg">
-    <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-12">
-      <div class="flex-1 fade-in">
-        <h2 class="text-3xl md:text-4xl font-bold neon mb-6">Why Choose Us?</h2>
-        <p class="text-gray-300 mb-4">Our passionate team combines years of experience in web, mobile, automation, and AI to deliver innovative solutions that drive real business results. We focus on quality, transparency, and long-term partnerships.</p>
-        <ul class="list-disc list-inside text-gray-400 space-y-2">
-          <li>Expert team with proven track record</li>
-          <li>Client-centric approach</li>
-          <li>Cutting-edge technologies</li>
-          <li>End-to-end support</li>
-        </ul>
+      <div class="service-card fade-in" onclick="openModal('crm')">
+        <div class="icon-wrapper"><i class="fas fa-database"></i></div>
+        <h3>CRM System Development</h3>
+        <p>Custom CRM solutions to manage customer relationships and boost efficiency</p>
       </div>
-      <div class="flex-1 flex justify-center fade-in">
-        <img src="https://source.unsplash.com/320x240/?team,office" alt="Our Team" class="rounded-2xl shadow-xl neon-border" />
+      <div class="service-card fade-in" onclick="openModal('cloud')">
+        <div class="icon-wrapper"><i class="fas fa-cloud"></i></div>
+        <h3>Cloud Solutions</h3>
+        <p>Deploy and manage scalable cloud infrastructure with AWS, Azure, or Google Cloud</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Testimonials -->
-  <section class="py-20 px-4 max-w-5xl mx-auto w-full">
-    <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 neon">Testimonials</h2>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      <div class="bg-darkcard rounded-xl p-6 shadow-lg fade-in">
-        <p class="text-gray-300 mb-4">"NeonIT delivered our project on time and exceeded expectations!"</p>
-        <div class="flex items-center gap-3">
-          <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client 1" class="w-10 h-10 rounded-full border-2 border-neonblue" />
-          <span class="font-bold">John D.</span>
-        </div>
-      </div>
-      <div class="bg-darkcard rounded-xl p-6 shadow-lg fade-in">
-        <p class="text-gray-300 mb-4">"Professional, innovative, and always available for support."</p>
-        <div class="flex items-center gap-3">
-          <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Client 2" class="w-10 h-10 rounded-full border-2 border-neonpurple" />
-          <span class="font-bold">Anna S.</span>
-        </div>
-      </div>
-      <div class="bg-darkcard rounded-xl p-6 shadow-lg fade-in">
-        <p class="text-gray-300 mb-4">"Their AI solutions transformed our business operations."</p>
-        <div class="flex items-center gap-3">
-          <img src="https://randomuser.me/api/portraits/men/65.jpg" alt="Client 3" class="w-10 h-10 rounded-full border-2 border-neonblue" />
-          <span class="font-bold">Michael B.</span>
-        </div>
+<!-- Modal -->
+<div id="serviceModal" class="modal">
+  <div class="modal-content">
+    <div class="icon-wrapper" id="modalIcon"></div>
+    <h3 id="modalTitle"></h3>
+    <p id="modalDescription"></p>
+    <button class="close-btn" onclick="closeModal()">Close</button>
+  </div>
+</div>
+
+<!-- Why Choose Us -->
+<section class="py-20 px-4 bg-gradient-to-r from-darkcard to-darkbg">
+  <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-12">
+    <div class="flex-1 fade-in">
+      <h2 class="text-3xl md:text-4xl font-bold neon mb-6">Why Choose Us?</h2>
+      <p class="text-gray-300 mb-4">Our passionate team combines years of experience in web, mobile, automation, and AI to deliver innovative solutions that drive real business results. We focus on quality, transparency, and long-term partnerships.</p>
+      <ul class="list-disc list-inside text-gray-400 space-y-2">
+        <li>Expert team with proven track record</li>
+        <li>Client-centric approach</li>
+        <li>Cutting-edge technologies</li>
+        <li>End-to-end support</li>
+      </ul>
+    </div>
+    <div class="flex-1 flex justify-center fade-in">
+      <img src="https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=320&h=240&dpr=2" alt="Our Team" class="rounded-2xl shadow-xl neon-border" />
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="py-20 px-4 max-w-5xl mx-auto w-full">
+  <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 neon">Testimonials</h2>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div class="bg-darkcard rounded-xl p-6 shadow-lg fade-in">
+      <p class="text-gray-300 mb-4">"Amsoft IT delivered our project on time and exceeded expectations!"</p>
+      <div class="flex items-center gap-3">
+        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client 1" class="w-10 h-10 rounded-full border-2 border-neonblue" />
+        <span class="font-bold">John D.</span>
       </div>
     </div>
-  </section>
+    <div class="bg-darkcard rounded-xl p-6 shadow-lg fade-in">
+      <p class="text-gray-300 mb-4">"Professional, innovative, and always available for support."</p>
+      <div class="flex items-center gap-3">
+        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Client 2" class="w-10 h-10 rounded-full border-2 border-neonpurple" />
+        <span class="font-bold">Anna S.</span>
+      </div>
+    </div>
+    <div class="bg-darkcard rounded-xl p-6 shadow-lg fade-in">
+      <p class="text-gray-300 mb-4">"Their AI solutions transformed our business operations."</p>
+      <div class="flex items-center gap-3">
+        <img src="https://randomuser.me/api/portraits/men/65.jpg" alt="Client 3" class="w-10 h-10 rounded-full border-2 border-neonblue" />
+        <span class="font-bold">Michael B.</span>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <!-- Contact CTA -->
-  <section id="contact" class="py-20 px-4 text-center bg-gradient-to-b from-darkcard to-darkbg">
-    <h2 class="text-3xl md:text-4xl font-bold neon mb-6">Ready to start your project?</h2>
-    <p class="text-gray-300 mb-8">Contact us today and let's build something amazing together.</p>
-    <a href="mailto:info@neonit.com" class="inline-block px-8 py-3 rounded-full bg-neonpurple hover:bg-neonblue transition-colors duration-300 text-white font-bold shadow-lg neon-border">Contact Us</a>
-  </section>
+<!-- Contact CTA -->
+<section id="contact" class="py-20 px-4 text-center bg-gradient-to-b from-darkcard to-darkbg">
+  <h2 class="text-3xl md:text-4xl font-bold neon mb-6">Ready to start your project?</h2>
+  <p class="text-gray-300 mb-8">Contact us today and let's build something amazing together.</p>
+  <a href="mailto:info@amsoft.am" class="inline-block px-8 py-3 rounded-full bg-neonpurple hover:bg-neonblue transition-colors duration-300 text-white font-bold shadow-lg neon-border">Contact Us</a>
+</section>
 
-  <!-- Footer -->
-  <footer class="py-8 px-4 text-center text-gray-500 bg-darkbg border-t border-darkcard mt-auto">
-    <div class="mb-2">&copy; 2024 NeonIT Solutions. All rights reserved.</div>
-    <div class="text-xs">Made with <span class="text-neonblue">&hearts;</span> by NeonIT Team</div>
-  </footer>
+<!-- Footer -->
+<footer class="py-8 px-4 text-center text-gray-500 bg-darkbg border-t border-darkcard mt-auto">
+  <div class="mb-2">© 2025 Amsoft IT Solutions. All rights reserved.</div>
+  <div class="text-xs">Made with <span class="text-neonblue">♥</span> by Amsoft IT Team</div>
+</footer>
 
-  <script>
-    // Fade-in animation on scroll
-    function revealOnScroll() {
-      document.querySelectorAll('.fade-in').forEach(el => {
-        const rect = el.getBoundingClientRect();
-        if (rect.top < window.innerHeight - 60) {
-          el.classList.add('visible');
-        }
-      });
+<script>
+  // Fade-in animation on scroll
+  function revealOnScroll() {
+    document.querySelectorAll('.fade-in').forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight - 60) {
+        el.classList.add('visible');
+      }
+    });
+  }
+  window.addEventListener('scroll', revealOnScroll);
+  window.addEventListener('DOMContentLoaded', revealOnScroll);
+
+  // Modal functionality
+  const modal = document.getElementById('serviceModal');
+  const modalIcon = document.getElementById('modalIcon');
+  const modalTitle = document.getElementById('modalTitle');
+  const modalDescription = document.getElementById('modalDescription');
+
+  const serviceData = {
+    web: {
+      icon: 'fas fa-desktop',
+      title: 'Web Development',
+      description: 'We craft modern, responsive, and scalable websites using the latest technologies like React, Angular, and Node.js to meet your business goals and enhance user engagement.'
+    },
+    mobile: {
+      icon: 'fas fa-mobile-alt',
+      title: 'Mobile Development',
+      description: 'Our team develops cross-platform mobile applications for iOS and Android using frameworks like Flutter and React Native, ensuring seamless performance and user experience.'
+    },
+    automation: {
+      icon: 'fas fa-cogs',
+      title: 'Automation',
+      description: 'Streamline your business processes with custom automation solutions, integrating CRM, ERP, and AI-driven workflows to boost efficiency and reduce operational costs.'
+    },
+    ai: {
+      icon: 'fas fa-brain',
+      title: 'AI Solutions',
+      description: 'Leverage our AI expertise to build intelligent chatbots, predictive analytics, and smart automation tools that transform your business operations and customer interactions.'
+    },
+    crm: {
+      icon: 'fas fa-database',
+      title: 'CRM System Development',
+      description: 'Our custom CRM solutions are tailored to your business, offering robust features for customer management, sales tracking, and analytics to drive growth and efficiency.'
+    },
+    cloud: {
+      icon: 'fas fa-cloud',
+      title: 'Cloud Solutions',
+      description: 'Deploy and manage scalable cloud infrastructure with AWS, Azure, or Google Cloud, offering secure, flexible, and cost-effective solutions to power your business applications and data.'
     }
-    window.addEventListener('scroll', revealOnScroll);
-    window.addEventListener('DOMContentLoaded', revealOnScroll);
-  </script>
+  };
+
+  function openModal(service) {
+    const data = serviceData[service];
+    modalIcon.innerHTML = `<i class="${data.icon}"></i>`;
+    modalTitle.textContent = data.title;
+    modalDescription.textContent = data.description;
+    modal.style.display = 'flex';
+  }
+
+  function closeModal() {
+    modal.style.display = 'none';
+  }
+
+  // Close modal when clicking outside
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      closeModal();
+    }
+  });
+</script>
 </body>
-</html> 
+</html>
