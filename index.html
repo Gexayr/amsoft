@@ -170,6 +170,34 @@
     .modal-content .close-btn:hover {
       background-color: #3b82f6;
     }
+
+    .modal-content input[type="email"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #3b82f6;
+      border-radius: 5px;
+      background-color: #0f172a;
+      color: white;
+      font-family: 'Inter', sans-serif;
+    }
+    .modal-content input[type="email"]:focus {
+      outline: none;
+      border-color: #a21caf;
+      box-shadow: 0 0 10px #3b82f6;
+    }
+    .modal-content button[type="submit"] {
+      background-color: #3b82f6;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 25px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .modal-content button[type="submit"]:hover {
+      background-color: #a21caf;
+    }
   </style>
 </head>
 <body class="bg-darkbg text-white min-h-screen flex flex-col">
@@ -280,8 +308,26 @@
 <section id="contact" class="py-20 px-4 text-center bg-gradient-to-b from-darkcard to-darkbg">
   <h2 class="text-3xl md:text-4xl font-bold neon mb-6">Ready to start your project?</h2>
   <p class="text-gray-300 mb-8">Contact us today and let's build something amazing together.</p>
-  <a href="mailto:info@amsoft.am" class="inline-block px-8 py-3 rounded-full bg-neonpurple hover:bg-neonblue transition-colors duration-300 text-white font-bold shadow-lg neon-border">Contact Us</a>
+<!--  <a href="mailto:info@amsoft.am" class="inline-block px-8 py-3 rounded-full bg-neonpurple hover:bg-neonblue transition-colors duration-300 text-white font-bold shadow-lg neon-border">Contact Us</a>-->
+  <button onclick="openContactModal()" class="inline-block px-8 py-3 rounded-full bg-neonpurple hover:bg-neonblue transition-colors duration-300 text-white font-bold shadow-lg neon-border">Contact Us</button>
 </section>
+
+
+<!-- Contact Modal -->
+<div id="contactModal" class="modal">
+  <div class="modal-content">
+    <h3 class="neon">Contact Us</h3>
+    <p class="text-gray-300">Please enter your email address, and we will contact you as soon as possible to assist with your request.</p>
+    <form id="contactForm" onsubmit="submitForm(event)">
+      <input type="email" id="email" name="email" placeholder="Your Email" required>
+      <button type="submit">Submit</button>
+      <button class="close-btn" onclick="closeContactModal()">Close</button>
+    </form>
+  </div>
+</div>
+
+
+
 
 <!-- Footer -->
 <footer class="py-8 px-4 text-center text-gray-500 bg-darkbg border-t border-darkcard mt-auto">
@@ -357,6 +403,31 @@
   modal.addEventListener('click', (e) => {
     if (e.target === modal) {
       closeModal();
+    }
+  });
+
+  // Contact Modal functionality
+  const contactModal = document.getElementById('contactModal');
+
+  function openContactModal() {
+    contactModal.style.display = 'flex';
+  }
+
+  function closeContactModal() {
+    contactModal.style.display = 'none';
+  }
+
+  function submitForm(event) {
+    event.preventDefault();
+    const email = document.getElementById('email').value;
+    alert(`Thank you for your submission. We have received your email: ${email}. We will contact you shortly.`);
+    document.getElementById('contactForm').reset();
+    closeContactModal();
+  }
+
+  contactModal.addEventListener('click', (e) => {
+    if (e.target === contactModal) {
+      closeContactModal();
     }
   });
 </script>
