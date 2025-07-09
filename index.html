@@ -321,10 +321,19 @@
     <form id="contactForm" onsubmit="submitForm(event)">
       <input type="email" id="email" name="email" placeholder="Your Email" required>
       <button type="submit">Submit</button>
-      <button class="close-btn" onclick="closeContactModal()">Close</button>
+      <button type="button" class="close-btn" onclick="closeContactModal()">Close</button>
     </form>
   </div>
 </div>
+
+<div id="thankYouModal" class="modal" style="display: none;">
+  <div class="modal-content">
+    <h3 class="neon">Thank You!</h3>
+    <p id="thankYouMessage" class="text-gray-300"></p>
+    <button class="close-btn" onclick="closeThankYouModal()">Close</button>
+  </div>
+</div>
+
 
 
 
@@ -408,21 +417,58 @@
 
   // Contact Modal functionality
   const contactModal = document.getElementById('contactModal');
+  const thankYouModal = document.getElementById('thankYouModal');
+  const thankYouMessageElement = document.getElementById('thankYouMessage');
 
   function openContactModal() {
     contactModal.style.display = 'flex';
   }
+  function openThankYouModal(message) {
+    thankYouMessageElement.textContent = message;
+    thankYouModal.style.display = 'block';
+  }
 
+  function closeThankYouModal() {
+    thankYouModal.style.display = 'none';
+  }
   function closeContactModal() {
     contactModal.style.display = 'none';
   }
 
-  function submitForm(event) {
-    event.preventDefault();
-    const email = document.getElementById('email').value;
-    alert(`Thank you for your submission. We have received your email: ${email}. We will contact you shortly.`);
-    document.getElementById('contactForm').reset();
-    closeContactModal();
+  async function submitForm(event) {
+    event.preventDefault(); // Prevent default form submission
+
+    const emailInput = document.getElementById('email');
+    const email = emailInput.value;
+
+    // IMPORTANT: Replace with the actual URL of your Go backend
+    const goBackendUrl = 'http://localhost:8080/submit-contact';
+
+    try {
+      const response = await fetch(goBackendUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded', // Important for form data
+        },
+        body: `email=${encodeURIComponent(email)}`, // Send email as form-urlencoded data
+      });
+
+      if (response.ok) { // Check if the response status is 200-299
+        closeContactModal(); // Close the contact form modal
+        openThankYouModal(`Thank you for your submission. We have received your email: ${email}. We will contact you shortly.`);
+      } else {
+        // Handle server errors or non-OK responses
+        const errorText = await response.text(); // Get error message from server
+        alert(`Submission failed: ${errorText || response.statusText}. Please try again.`);
+        console.error('Server response was not OK:', response.status, errorText);
+      }
+    } catch (error) {
+      // Handle network errors (e.g., server not reachable)
+      alert('An error occurred while submitting your request. Please check your internet connection and try again.');
+      console.error('Network or fetch error:', error);
+    } finally {
+      // Optionally re-enable submit button or hide loading indicator here
+    }
   }
 
   contactModal.addEventListener('click', (e) => {

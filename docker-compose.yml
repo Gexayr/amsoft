@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  app:
+    image: contact-mailer-app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8088:8088"
+    environment:
+      - SMTP_HOST=amsoft.am
+      - SMTP_PORT=587
+      - SMTP_USER=info@amsoft.am
+      - SMTP_PASS=infoQ!@
+      - TO_EMAIL=admin@amsoft.com
+    network_mode: host
