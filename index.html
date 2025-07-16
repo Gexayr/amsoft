@@ -425,7 +425,7 @@
   }
   function openThankYouModal(message) {
     thankYouMessageElement.textContent = message;
-    thankYouModal.style.display = 'block';
+    thankYouModal.style.display = 'flex';
   }
 
   function closeThankYouModal() {
@@ -442,7 +442,7 @@
     const email = emailInput.value;
 
     // IMPORTANT: Replace with the actual URL of your Go backend
-    const goBackendUrl = 'http://localhost:8080/submit-contact';
+    const goBackendUrl = 'http://localhost:8088/submit-contact';
 
     try {
       const response = await fetch(goBackendUrl, {

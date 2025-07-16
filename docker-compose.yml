@@ -6,11 +6,12 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "8088:8088"
+      - "${APP_PORT}:${APP_PORT}"
     environment:
-      - SMTP_HOST=amsoft.am
-      - SMTP_PORT=587
-      - SMTP_USER=info@amsoft.am
-      - SMTP_PASS=infoQ!@
-      - TO_EMAIL=admin@amsoft.com
+      - SMTP_HOST=${SMTP_HOST}
+      - SMTP_PORT=${SMTP_PORT}
+      - SMTP_USER=${SMTP_USER}
+      - SMTP_PASS=${SMTP_PASS}
+      - TO_EMAIL=${TO_EMAIL}
+      - PORT=${APP_PORT}
     network_mode: host
