@@ -12,7 +12,7 @@ import (
 
 func main() {
 	http.HandleFunc("/submit-contact", handleSubmit)
-	http.HandleFunc("/", serveIndex) // Serve index.html at root
+// 	http.HandleFunc("/", serveIndex) // Serve index.html at root
 
 	port := os.Getenv("PORT")
 	if port == "" {
@@ -23,13 +23,13 @@ func main() {
 	log.Fatal(http.ListenAndServe(":"+port, nil))
 }
 
-func serveIndex(w http.ResponseWriter, r *http.Request) {
+/* func serveIndex(w http.ResponseWriter, r *http.Request) {
 	if r.URL.Path != "/" {
 		http.NotFound(w, r)
 		return
 	}
 	http.ServeFile(w, r, "index.html")
-}
+} */
 
 func handleSubmit(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodPost {

@@ -308,7 +308,7 @@
 <section id="contact" class="py-20 px-4 text-center bg-gradient-to-b from-darkcard to-darkbg">
   <h2 class="text-3xl md:text-4xl font-bold neon mb-6">Ready to start your project?</h2>
   <p class="text-gray-300 mb-8">Contact us today and let's build something amazing together.</p>
-<!--  <a href="mailto:info@amsoft.am" class="inline-block px-8 py-3 rounded-full bg-neonpurple hover:bg-neonblue transition-colors duration-300 text-white font-bold shadow-lg neon-border">Contact Us</a>-->
+  <!--  <a href="mailto:info@amsoft.am" class="inline-block px-8 py-3 rounded-full bg-neonpurple hover:bg-neonblue transition-colors duration-300 text-white font-bold shadow-lg neon-border">Contact Us</a>-->
   <button onclick="openContactModal()" class="inline-block px-8 py-3 rounded-full bg-neonpurple hover:bg-neonblue transition-colors duration-300 text-white font-bold shadow-lg neon-border">Contact Us</button>
 </section>
 
@@ -442,7 +442,7 @@
     const email = emailInput.value;
 
     // IMPORTANT: Replace with the actual URL of your Go backend
-    const goBackendUrl = 'http://localhost:8088/submit-contact';
+    const goBackendUrl = 'https://amsoft.am/submit-contact';
 
     try {
       const response = await fetch(goBackendUrl, {
